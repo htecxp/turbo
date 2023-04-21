@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
 
   # GET /customers or /customers.json
   def index
-    @customers = Customer.all
+    @customers = Customer.all.order("id DESC")
   end
 
   # GET /customers/1 or /customers/1.json
@@ -25,6 +25,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
+        format.turbo_stream { render turbo_stream: turbo_stream.prepend("customers", partial: "customers/customer", locals: { customer: @customer }) }
         format.html { redirect_to customer_url(@customer), notice: "Customer was successfully created." }
         format.json { render :show, status: :created, location: @customer }
       else

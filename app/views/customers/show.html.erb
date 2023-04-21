@@ -1,10 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<%= turbo_frame_tag "customer_form" do %>
+  <p style="color: green"><%= notice %></p>
 
-<%= render @customer %>
+  <%= render @customer %>
 
-<div>
-  <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
-  <%= link_to "Back to customers", customers_path %>
+  <div>
+    <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
+    <%= link_to "Back to customers", customers_path %>
 
-  <%= button_to "Destroy this customer", @customer, method: :delete %>
-</div>
+    <%= button_to "Destroy this customer", @customer, method: :delete %>
+  </div>
+
+  <%= link_to "Add a New customer", new_customer_path, class: "text-blue-500 mt-4", data: {turbo_frame: "customer_form"} %>
+<% end %>
