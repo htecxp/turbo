@@ -1,21 +1,26 @@
 <div class="text-green-500"><%= notice %></div>
+<%= link_to "New customer", new_customer_path, class: "text-blue-500 mt-4", data: {turbo_frame: "customer_form"} %>
 
 <h1 class="mb-4">Customers</h1>
+<div class="grid grid-cols-12">
 
-<div id="customers" class="w-full">
-  <div class="grid grid-cols-table-cols gap-4 mb-4">
-    <div class="font-bold">Name</div>
-    <div class="font-bold">Address</div>
-    <div class="font-bold">Actions</div>
-  </div>
-  <% @customers.each do |customer| %>
-    <div class="grid grid-cols-3 gap-4 border-b border-gray-300 mb-2">
-      <%= render customer %>
-    </div>
-  <% end %>
+	<div id="customers" class="w-full border col-span-6 p-4">
+		<div class="grid grid-cols-table-cols gap-4 mb-4">
+			<div class="font-bold">Name</div>
+			<div class="font-bold">Address</div>
+			<div class="font-bold">Actions</div>
+		</div>
+		<% @customers.each do |customer| %>
+			<div class="grid grid-cols-3 gap-4 border-b border-gray-300 mb-2">
+				<%= render customer %>
+			</div>
+		<% end %>
+	</div>
+	<div class="col-span-6 border p-4">
+    <%= turbo_frame_tag "customer_form" do %>
+    <% end %>
+	</div>
 </div>
-
-<%= link_to "New customer", new_customer_path, class: "text-blue-500 mt-4" %>
 
 <!-- Custom CSS to define the number of columns for the table -->
 <style>
