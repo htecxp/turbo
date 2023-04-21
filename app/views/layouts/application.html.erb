@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Turbo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body class="bg-gray-100">
+    <header class="bg-blue-500 text-white py-4 px-8">
+      <h1 class="text-xl font-bold">Turbo</h1>
+    </header>
+
+    <main class="container mx-auto mt-8 px-4">
+      <%= yield %>
+    </main>
+
+    <footer class="bg-blue-500 text-white py-4 px-8 mt-8">
+      <p class="text-sm">© 2023 Turbo. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

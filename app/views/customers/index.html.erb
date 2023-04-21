@@ -1,0 +1,28 @@
+<div class="text-green-500"><%= notice %></div>
+
+<h1 class="mb-4">Customers</h1>
+
+<div id="customers" class="w-full">
+  <div class="grid grid-cols-table-cols gap-4 mb-4">
+    <div class="font-bold">Name</div>
+    <div class="font-bold">Address</div>
+    <div class="font-bold">Actions</div>
+  </div>
+  <% @customers.each do |customer| %>
+    <div class="grid grid-cols-3 gap-4 border-b border-gray-300 mb-2">
+        <%= render customer %>
+      <div>
+        <%= link_to "Show this customer", customer, class: "text-blue-500" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "New customer", new_customer_path, class: "text-blue-500 mt-4" %>
+
+<!-- Custom CSS to define the number of columns for the table -->
+<style>
+  .grid-cols-table-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+</style>
